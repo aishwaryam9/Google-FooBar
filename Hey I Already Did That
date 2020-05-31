@@ -1,0 +1,69 @@
+//Hey I Already Did That
+import java.util.*;
+public class Program
+{
+	public static void main(String[] args) {
+	    
+	    String n = "210022"; //ID
+	    int b = 3; //base
+	    Integer.parseInt(n, b);
+	    solution(n, b);
+	    System.out.println(count);
+		
+	}
+	
+	static int count = 0;
+	static HashSet <String> set = new HashSet <String>(); 
+	static HashSet <String> cycle = new HashSet <String>(); 
+
+	
+	public static void solution(String n, int b)
+	{
+	    String asc = ascending(n);
+	    String desc = descending(asc);
+	    
+	    //System.out.println("desc: " + desc + "  asc: " + asc);
+
+	    
+	    int x = Integer.parseInt(desc, b);
+	    int  y = Integer.parseInt(asc, b);
+	    
+	    //System.out.println("x: " + x + "  y: " + y);
+	    
+	    String z = Integer.toString(x - y, b);
+	    
+	    //System.out.println("z: " + z);
+	        
+	    //System.out.println("set: " + set);      
+	  
+	    if (set.contains(z))
+	    {
+	        //System.out.println("Set contains z");
+	        if (cycle.contains(z))
+	            return;
+	        else
+	        {
+    	        cycle.add(z);
+    	        count++;
+    	        //System.out.println("Count: " + count);
+	        } 
+	    }
+	    if (!set.contains(z))
+	        set.add(z);
+	    //System.out.println();
+	    solution(z, b);
+	}
+	
+	public static String ascending(String n)
+	{
+	    char[] s = n.toCharArray();
+	    Arrays.sort(s);
+	    return (new String(s));   
+	}
+	
+	public static String descending(String n)
+	{
+	    StringBuilder sb = new StringBuilder(n);
+	    return sb.reverse().toString();
+	}
+}
