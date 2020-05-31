@@ -1,6 +1,6 @@
 //Hey I Already Did That
 import java.util.*;
-public class Program
+public class HeyIAlreadyDidThat
 {
 	public static void main(String[] args) {
 	    
